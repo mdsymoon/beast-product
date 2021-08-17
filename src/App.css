@@ -1,5 +1,13 @@
 .App {
-  text-align: center;
+  background-image: url(./images/wallpapertip_white-wallpaper-hd_19122.jpg);
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: 100% 100%;
+  position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  border: 4px solid black;
+  
 }
 
 .App-logo {
@@ -35,4 +43,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#title{
+  color: rgb(224, 8, 8);
+  font-weight: bold;
+  font-size:35px;
+  padding-top:15px;
+  font-family: lobster, cursive ;
+ 
+}
+#logo{
+  width: 80px;
+  
 }

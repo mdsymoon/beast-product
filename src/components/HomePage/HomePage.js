@@ -1,17 +1,20 @@
-import React from 'react';
-import './HomePage.css'
+import { Button } from "@material-ui/core";
+import React from "react";
+
+import "./HomePage.css";
+
 const HomePage = () => {
-    return (
-        <div>
-            <div className="img-area">
-            
-            </div>
-            <div className="elements-area">
-                <h1>Beast Products</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, corrupti!</p>
-            </div>
-        </div>
-    );
+  return (
+    <div>
+      
+      <div className="search-field">
+        <input type="text" className="search-input" disabled></input>
+        <Button id="search-button" disabled>
+          SEARCH
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 export default HomePage;
