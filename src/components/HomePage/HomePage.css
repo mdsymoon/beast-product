@@ -1,13 +1,39 @@
 .search-field {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 80px ;
+  margin-bottom:80px;
 }
 .search-input {
   height: 35px;
-  width: 250px;
+  width: 60%;
+  max-width: 400px;
+  border:2px solid rgb(179, 176, 176);
 }
 #search-button {
   background: red;
   color: white;
   margin-bottom: 5px;
+}
+
+.all-products {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.product-img{
+  height: 270px;
+  padding:10px;
+  
+}
+
+.product-card{
+  margin: 30px;
+  border-radius: 10px;
+  border: 2px solid rgb(145, 9, 9);
+  box-shadow: 0px 0px 20px 0px ;
+}
+.card-font-color{
+  color:rgb(145, 9, 9);
 }

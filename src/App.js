@@ -8,6 +8,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 
 import Header from "./components/Header/Header";
 import AddProduct from "./components/Addproduct/AddProduct";
+import Checkout from "./components/Checkout/Checkout";
 
 function App() {
   return (
@@ -18,12 +19,16 @@ function App() {
           <Route path="/Admin/Dashboard">
             <Admin></Admin>
           </Route>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Header></Header>
             <HomePage></HomePage>
           </Route>
           <Route path="/Admin/AddProduct">
           <Admin></Admin>
+          </Route>
+          <Route path="/checkout/:id">
+            <Header></Header>
+          <Checkout></Checkout>
           </Route>
         </Switch>
       </div>

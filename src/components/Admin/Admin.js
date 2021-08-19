@@ -23,7 +23,7 @@ const Admin = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Link to="/home" className="nav-text">Home</Link>
+              <Link to="/" className="nav-text">Home</Link>
               <Link to="/Admin/Dashboard" className="nav-text">Dashboard</Link>
               <Link to="/Admin/AddProduct" className="nav-text">Add Product</Link>
             </Nav>
