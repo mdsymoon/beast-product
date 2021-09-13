@@ -1,14 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import HomePage from "./components/HomePage/HomePage";
 
-import Admin from "./components/Admin/Admin";
-import Dashboard from "./components/Dashboard/Dashboard";
-
-import Header from "./components/Header/Header";
-import AddProduct from "./components/Addproduct/AddProduct";
-import Checkout from "./components/Checkout/Checkout";
+import Home from "./components/HomePage/Home/Home";
+import Dashboard from "./components/DashboardPage/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -16,20 +11,14 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/about"></Route>
-          <Route path="/Admin/Dashboard">
-            <Admin></Admin>
-          </Route>
+          <Route path="/Admin/Dashboard"></Route>
           <Route exact path="/">
-            <Header></Header>
-            <HomePage></HomePage>
+            <Home></Home>
           </Route>
-          <Route path="/Admin/AddProduct">
-          <Admin></Admin>
+          <Route path="/Dashboard">
+            <Dashboard></Dashboard>
           </Route>
-          <Route path="/checkout/:id">
-            <Header></Header>
-          <Checkout></Checkout>
-          </Route>
+          <Route path="/checkout/:id"></Route>
         </Switch>
       </div>
     </Router>

@@ -4,7 +4,7 @@ import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../../images/—Pngtree—letter b logo design png_6041747.png";
+import logo from "../../../images/—Pngtree—letter b logo design png_6041747.png";
 
 const Header = () => {
     return (
@@ -20,7 +20,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Link to="/" className="nav-text">Home</Link>
-              <Link to="/Admin/Dashboard" className="nav-text">Admin</Link>
+              <Link to="/Dashboard/productList" className="nav-text">Dashboard</Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
