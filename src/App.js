@@ -5,9 +5,17 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/HomePage/Home/Home";
 import Dashboard from "./components/DashboardPage/Dashboard/Dashboard";
 import LogIn from "./components/LogIn/LogIn";
+import { createContext, useState } from "react";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser , setLoggedInUser] = useState({});
   return (
+    <UserContext.Provider value = {[loggedInUser , setLoggedInUser]}>
+
+    
     <Router>
       <div className="App">
         <Switch>
@@ -16,9 +24,9 @@ function App() {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <Route path="/Dashboard">
+          <PrivateRoute path="/Dashboard">
             <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
           <LogIn></LogIn>
           </Route>
@@ -26,6 +34,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </UserContext.Provider>
   );
 }
 

@@ -48,6 +48,7 @@ const AddProduct = () => {
   return (
     <div className="container mt-5 pt-5">
       <h1 className="text-white mb-5">Add Product</h1>
+      
       <div className="addProduct-form ">
         <form
           className={classes.root}

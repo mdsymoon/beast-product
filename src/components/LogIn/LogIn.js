@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./LogIn.css";
 import firebase from "firebase/compat/app";
 import { Button, Form } from "react-bootstrap";
@@ -10,11 +10,19 @@ import firebaseConfig from "./firebase.config";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { FcGoogle } from "react-icons/fc";
+import { UserContext } from './../../App';
+import { useHistory , useLocation } from 'react-router-dom';
 
 firebase.initializeApp(firebaseConfig);
 
 const LogIn = () => {
+
+  const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
   const auth = getAuth();
+
+  const [loggedInUser , setLoggedInUser] = useContext(UserContext);
 
   const [newUser, setNewUser] = useState(false);
 
@@ -42,6 +50,8 @@ const LogIn = () => {
           photo: photoURL,
         };
         setUser(logInUser);
+        setLoggedInUser(logInUser);
+        history.replace(from);
       })
       .catch((err) => {
         console.log(err);
@@ -71,6 +81,7 @@ const LogIn = () => {
           newUserInfo.error = "";
           newUserInfo.success = true;
           setUser(newUserInfo);
+          setLoggedInUser(user)
           updateUserName(user.name);
           console.log(res);
         })
@@ -89,6 +100,7 @@ const LogIn = () => {
           newUserInfo.error = "";
           newUserInfo.success = true;
           setUser(newUserInfo);
+          setLoggedInUser(newUserInfo)
           console.log("sign in info", res.user);
         })
         .catch((error) => {
@@ -195,7 +207,9 @@ const LogIn = () => {
           <p style={{ color: "green" }}>
             User {newUser ? "Created" : "Logged In"} Successfully
           </p>
+          
         )}
+       
       </div>
     </div>
   );
