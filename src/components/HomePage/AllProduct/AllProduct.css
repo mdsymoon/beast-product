@@ -1,0 +1,26 @@
+
+.productCard{
+   
+    display: flex;
+    justify-content: center;
+    
+}
+.card-style{
+    margin: 20px 10px;
+}
+.search-input{
+    height:40px;
+    width: 400px;
+    text-align: center;
+    color:black;
+    border:none;
+    background-color: white;
+    
+}
+.search-button{
+    width:100px;
+    height:40px;
+    border:none;
+    color:white;
+    background-color:rgb(136, 8, 8)
+}

@@ -1,0 +1,11 @@
+.product-card{
+    background-color: #4e4e4b;
+    width: 19rem;
+    height: 21rem;
+    margin: 20px;
+}
+.buy-button{
+    border:none;
+    color:white;
+    background-color: rgb(189, 66, 66);
+}
