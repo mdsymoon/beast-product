@@ -4,6 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import "./AddProduct.css";
 import { Form } from "react-bootstrap";
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,46 +48,48 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="container mt-5 pt-5">
-      <h1 className="text-white mb-5">Add Product</h1>
-      
-      <div className="addProduct-form ">
-        <form
-          className={classes.root}
-          noValidate
-          autoComplete="off"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <TextField
-            id="standard-basic"
-            label="Product Name"
-            {...register("title", { required: true })}
-          />
-          <br />
-          <TextField
-            type="number"
-            id="standard-basic"
-            label="Product Price"
-            {...register("price", { required: true })}
-          />
-          <br />
-          <Form.Select aria-label="Default select example" {...register("status", { required: true })} style={{width:'200px', margin:'auto', marginTop:'10px'}}>
-            
-            <option value="available">available</option>
-            <option value="unavailable">unavailable</option>
-            
-          </Form.Select>
-          <br />
-          <TextField
-            type="file"
-            {...register("img", { required: true })}
-            onChange={handleFileChange}
-          />
-          <br />
-          <br />
+    <div className="d-flex justify-content-center">
+      <div>
+        <h1 className="text-white mb-5">Add Product</h1>
 
-          <input type="submit" className="mb-5" />
-        </form>
+        <div className="addProduct-form ">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              className="form-control input-style"
+              placeholder="Product Name"
+              {...register("title", { required: true })}
+            />
+            <br />
+            <input
+              className="form-control input-style"
+              placeholder="Product Price"
+              type="number"
+              {...register("price", { required: true })}
+            />
+            <br />
+            <Form.Select
+              className="input-style"
+              aria-label="Default select example"
+              {...register("status", { required: true })}
+            >
+              <option value="available">available</option>
+              <option value="unavailable">unavailable</option>
+            </Form.Select>
+            <br />
+            <input
+              className="input-style"
+              type="file"
+              {...register("img", { required: true })}
+              onChange={handleFileChange}
+            />
+            <br />
+            <br />
+
+            <Button variant="contained" type="submit" className="mb-5">
+              Add Product
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   );

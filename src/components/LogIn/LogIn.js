@@ -81,9 +81,10 @@ const LogIn = () => {
           newUserInfo.error = "";
           newUserInfo.success = true;
           setUser(newUserInfo);
-          setLoggedInUser(user)
+          setLoggedInUser(user);
           updateUserName(user.name);
-          console.log(res);
+          history.replace(from);
+         
         })
         .catch((error) => {
           const newUserInfo = { ...user };
@@ -101,7 +102,7 @@ const LogIn = () => {
           newUserInfo.success = true;
           setUser(newUserInfo);
           setLoggedInUser(newUserInfo)
-          console.log("sign in info", res.user);
+          history.replace(from);
         })
         .catch((error) => {
           const newUserInfo = { ...user };
@@ -178,7 +179,7 @@ const LogIn = () => {
             required
           />
 
-          <input
+          <input className="mt-3"
             type="checkbox"
             onChange={() => setNewUser(!newUser)}
             name="newUser"

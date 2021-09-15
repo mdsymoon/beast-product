@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
-import {  Container} from "react-bootstrap";
+import { useContext } from "react";
+import { Container } from "react-bootstrap";
+import { AllProducts } from "../../../App";
 import AllProductCard from "../AllProductCard/AllProductCard";
-import './AllProduct.css';
-
+import "./AllProduct.css";
 
 const AllProduct = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useContext(AllProducts);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/allProduct`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
-  }, []);
   return (
     <Container className="mb-5">
-        <div className="d-flex justify-content-center my-5">
-            <input className="search-input" value="search product" disabled/>
-            <button className="search-button" disabled>Search</button>
-        </div>
-        <div className=" row  Container   ">
-        {products.map((product) => <AllProductCard product={product}></AllProductCard>
-        
-        )}
+      <div className="d-flex justify-content-center my-5">
+        <input className="search-input" value="search product" disabled />
+        <button className="search-button" disabled>
+          Search
+        </button>
+      </div>
+      <div className=" row  Container   ">
+        {products.map((product) => (
+          <AllProductCard
+            key={product._id}
+            product={product}
+            title={product.title}
+            price={product.price}
+            img={product.img}
+          ></AllProductCard>
+        ))}
       </div>
     </Container>
-      
-   
   );
 };
 
