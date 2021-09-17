@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import { SelectContext } from "../../App";
 import { UserContext } from "./../../App";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const ConfirmForm = () => {
   const history = useHistory();
@@ -22,7 +22,6 @@ const ConfirmForm = () => {
     const orderData = {
       ...data,
       ...selectProduct,
-      ...loggedInUser,
       orderStatus: "pending",
       orderDate: new Date().toDateString(),
     };
@@ -34,48 +33,59 @@ const ConfirmForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        history.push('/dashboard/productList')
+        history.push("/dashboard/productList");
       });
   };
   return (
     <div className="confirm-form ">
+     
       <Container>
         <div className="confirm-form-style">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <input
-             className="form-control"
-             
-              style={{ width: "400px", margin:'auto' }}
-              label="Customer Name"
+        <h1 style={{ color:'#880808'}}>Product Confirmation</h1>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            
+            <Form.Label>Your Name</Form.Label>
+            <Form.Control
+              className="input-style"
               defaultValue={loggedInUser.name}
               {...register("name", { required: true })}
             />
-            <br />
-            
-            <input
-             className="form-control"
-             
-              style={{ width: "400px", margin:'auto'}}
-              label="Product Name"
+            <Form.Label>Your Email</Form.Label>
+            <Form.Control
+              className="input-style"
+              defaultValue={loggedInUser.email}
+              {...register("email", { required: true })}
+            />
+
+            <Form.Label>Product Name</Form.Label>
+            <Form.Control
+              className="input-style"
               defaultValue={selectProduct.title}
               {...register("title", { required: true })}
             />
-            <br />
-            
 
-            <input
-              className="form-control"
-             
-              style={{ width: "400px", margin: "auto" }}
+            <Form.Label>Product Price</Form.Label>
+            <Form.Control
+              className="input-style"
               type="number"
               id="standard-basic"
               defaultValue={selectProduct.price}
               {...register("price", { required: true })}
             />
             <br />
+              <div className="d-flex justify-content-center ">
+              <Button variant="contained" className="mb-5 mx-5" onClick ={() => history.push('/')}>
+                Back
+                </Button> 
+              <Button variant="contained" type="submit" className="mb-5">
+              Confirm
+            </Button>
+
             
-            <Button variant="contained" type="submit" className="mb-5" >Confirm</Button>
-          </form>
+
+              </div>
+            
+          </Form>
         </div>
       </Container>
     </div>

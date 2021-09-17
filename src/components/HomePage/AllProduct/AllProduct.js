@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { Container } from "react-bootstrap";
-import { AllProducts } from "../../../App";
+import { Alert, Container } from "react-bootstrap";
+import { AllProducts, LoaderContext } from "../../../App";
 import AllProductCard from "../AllProductCard/AllProductCard";
 import "./AllProduct.css";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const AllProduct = () => {
   const [products, setProducts] = useContext(AllProducts);
+  const [loadData , setLoadData] = useContext(LoaderContext);
 
   return (
     <Container className="mb-5">
@@ -16,6 +18,8 @@ const AllProduct = () => {
           Search
         </button>
       </div>
+      {!loadData && <LinearProgress style={{marginTop: '200px'}} />}
+      
       <div className=" row  Container   ">
         {products.map((product) => (
           <AllProductCard
@@ -26,6 +30,7 @@ const AllProduct = () => {
             img={product.img}
           ></AllProductCard>
         ))}
+        
       </div>
     </Container>
   );

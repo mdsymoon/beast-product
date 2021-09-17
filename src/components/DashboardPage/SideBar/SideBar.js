@@ -60,8 +60,17 @@ const SideBar = () => {
         </List>
         <Divider />
         <List>
-          {['Product List'].map((text, index) => (
+          {['My Order List'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/dashboard/productList')}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['Cart Product'].map((text, index) => (
+            <ListItem button key={text} onClick={() => history.push('/dashboard/cartItem')}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -71,6 +80,24 @@ const SideBar = () => {
         <List>
           {['Add Product'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/dashboard/addProduct')}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['All Order List'].map((text, index) => (
+            <ListItem button key={text} onClick={() => history.push('/dashboard/allOrderList')}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['All Product List'].map((text, index) => (
+            <ListItem button key={text} onClick={() => history.push('/dashboard/allProductList')}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
