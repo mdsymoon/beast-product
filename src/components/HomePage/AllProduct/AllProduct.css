@@ -24,3 +24,6 @@
     color:white;
     background-color:rgb(136, 8, 8)
 }
+.loginAlert { animation: css 0s 2s forwards; }
+
+@keyframes css  { to { visibility: hidden; } }

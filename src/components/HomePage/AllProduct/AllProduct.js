@@ -6,9 +6,13 @@ import AllProductCard from "../AllProductCard/AllProductCard";
 import "./AllProduct.css";
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+
+
+
 const AllProduct = () => {
   const [products, setProducts] = useContext(AllProducts);
   const [loadData , setLoadData] = useContext(LoaderContext);
+
 
   return (
     <Container className="mb-5">

@@ -9,3 +9,8 @@
     color:white;
     background-color: rgb(189, 66, 66);
 }
+
+.hideThis { animation: css 0s 2s forwards; }
+
+@keyframes css  { to { visibility: hidden; } }
+                    /* visibility / overflow: hidden; */

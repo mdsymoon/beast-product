@@ -21,7 +21,7 @@ function App() {
   const [selectProduct, setSelectProduct] = useState({});
   const [products, setProducts] = useState([]);
 
-  const [loadData, setLoadData] = useState(false);
+  const [loadData, setLoadData] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:5000/allProduct`)
