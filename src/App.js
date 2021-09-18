@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Home from "./components/HomePage/Home/Home";
 import Dashboard from "./components/DashboardPage/Dashboard/Dashboard";
@@ -9,7 +9,7 @@ import { createContext, useState } from "react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ConfirmForm from "./components/ConfirmForm/ConfirmForm";
 import { useEffect } from "react";
-import LinearProgress from "@material-ui/core/LinearProgress";
+
 
 export const UserContext = createContext();
 export const SelectContext = createContext();
@@ -21,10 +21,10 @@ function App() {
   const [selectProduct, setSelectProduct] = useState({});
   const [products, setProducts] = useState([]);
 
-  const [loadData, setLoadData] = useState(true);
+  const [loadData, setLoadData] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allProduct`)
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/allProduct`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

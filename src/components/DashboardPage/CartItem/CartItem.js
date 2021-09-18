@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import CartItemCard from "./../CartItemCard/CartItemCard";
 import {
-  CartItemContext,
-  CartLoaderContext,
+  
   UserContext,
 } from "./../../../App";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -14,7 +13,7 @@ const CartItem = () => {
   const [cartLoader, setCartLoader] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/cartProduct`, {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/cartProduct`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: loggedInUser.email }),

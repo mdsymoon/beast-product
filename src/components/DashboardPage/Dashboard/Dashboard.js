@@ -3,7 +3,6 @@ import { Route } from "react-router";
 import AddProduct from "../AddProduct/AddProduct";
 import SideBar from "../SideBar/SideBar";
 import ProductList from "./../ProductList/ProductList";
-import logo from "../../../images/—Pngtree—letter b logo design png_6041747.png";
 import AllOrderList from "./../AllOrderList/AllOrderList";
 import AllProductList from "./../AllProductList/AllProductList";
 import CartItem from "../CartItem/CartItem";

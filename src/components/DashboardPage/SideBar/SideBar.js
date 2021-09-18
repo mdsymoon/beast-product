@@ -6,12 +6,17 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import {MdToc} from 'react-icons/md';
 import { useHistory } from 'react-router-dom';
+import {FaOpencart} from 'react-icons/fa';
+import {AiOutlineFileAdd} from 'react-icons/ai';
+import {FcHome} from 'react-icons/fc';
+import {RiFileList3Line} from 'react-icons/ri';
+import {FaProjectDiagram} from 'react-icons/fa';
+import {GrProjects} from 'react-icons/gr';
 
 const useStyles = makeStyles({
     list: {
@@ -53,7 +58,7 @@ const SideBar = () => {
         <List>
           {['Home'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/')}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <FcHome style={{fontSize:'30px', marginRight:'20px'}}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</FcHome>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -62,7 +67,7 @@ const SideBar = () => {
         <List>
           {['My Order List'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/dashboard/productList')}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <RiFileList3Line style={{fontSize:'30px', marginRight:'20px'}}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</RiFileList3Line>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -71,7 +76,7 @@ const SideBar = () => {
         <List>
           {['Cart Product'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/dashboard/cartItem')}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <FaOpencart style={{fontSize:'30px', marginRight:'20px'}}> {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</FaOpencart>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -80,7 +85,7 @@ const SideBar = () => {
         <List>
           {['Add Product'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/dashboard/addProduct')}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <AiOutlineFileAdd style={{fontSize:'30px', marginRight:'20px'}}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</AiOutlineFileAdd>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -89,7 +94,7 @@ const SideBar = () => {
         <List>
           {['All Order List'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/dashboard/allOrderList')}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <FaProjectDiagram style={{fontSize:'25px', marginRight:'20px'}}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</FaProjectDiagram>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -98,7 +103,7 @@ const SideBar = () => {
         <List>
           {['All Product List'].map((text, index) => (
             <ListItem button key={text} onClick={() => history.push('/dashboard/allProductList')}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <GrProjects style={{fontSize:'25px', marginRight:'20px'}}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</GrProjects>
               <ListItemText primary={text} />
             </ListItem>
           ))}

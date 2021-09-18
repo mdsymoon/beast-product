@@ -1,12 +1,15 @@
 .googleSignIn{
+  
    border:none;
-   background-color: #ddd;
    font-size: 25px;
    width:400px;
    border-radius:5px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: 0.10s;
+   margin:auto;
    
-}.googleSignIn:hover{
-    background-color: rgb(206, 206, 206);
 }
 .icon{
     font-size: 40px;

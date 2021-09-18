@@ -1,22 +1,24 @@
 import React, { useContext } from "react";
 import "./ConfirmForm.css";
-import TextField from "@material-ui/core/TextField";
+
 import { Form, Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import { SelectContext } from "../../App";
 import { UserContext } from "./../../App";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const ConfirmForm = () => {
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
   const history = useHistory();
   const [selectProduct] = useContext(SelectContext);
   const [loggedInUser] = useContext(UserContext);
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
+   
+    formState: {},
   } = useForm();
   const onSubmit = (data) => {
     const orderData = {
@@ -26,7 +28,7 @@ const ConfirmForm = () => {
       orderDate: new Date().toDateString(),
     };
 
-    fetch(`http://localhost:5000/orderData`, {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/orderData`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),
@@ -38,12 +40,10 @@ const ConfirmForm = () => {
   };
   return (
     <div className="confirm-form ">
-     
       <Container>
         <div className="confirm-form-style">
-        <h1 style={{ color:'#880808'}}>Product Confirmation</h1>
+          <h1 style={{ color: "#880808" }}>Product Confirmation</h1>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            
             <Form.Label>Your Name</Form.Label>
             <Form.Control
               className="input-style"
@@ -73,18 +73,18 @@ const ConfirmForm = () => {
               {...register("price", { required: true })}
             />
             <br />
-              <div className="d-flex justify-content-center ">
-              <Button variant="contained" className="mb-5 mx-5" onClick ={() => history.push('/')}>
+            <div className="d-flex justify-content-center ">
+              <Button
+                variant="contained"
+                className="mb-5 mx-5"
+                onClick={() => history.replace(from)}
+              >
                 Back
-                </Button> 
+              </Button>
               <Button variant="contained" type="submit" className="mb-5">
-              Confirm
-            </Button>
-
-            
-
-              </div>
-            
+                Confirm
+              </Button>
+            </div>
           </Form>
         </div>
       </Container>

@@ -1,28 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
 import "./AddProduct.css";
 import { Form } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
-import Select from "@material-ui/core/Select";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: 200,
-    },
-  },
-}));
 
 const AddProduct = () => {
-  const classes = useStyles();
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
+
     formState: { errors },
   } = useForm();
 
@@ -38,7 +24,7 @@ const AddProduct = () => {
     formData.append("price", data.price);
     formData.append("status", data.status);
 
-    fetch(`http://localhost:5000/addProduct`, {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/addProduct`, {
       method: "POST",
       body: formData,
     })

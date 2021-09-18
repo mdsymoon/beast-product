@@ -1,17 +1,18 @@
 import React, { useContext, useState } from "react";
 import "./LogIn.css";
 import firebase from "firebase/compat/app";
-import { Button, Form } from "react-bootstrap";
+import {  Form  } from "react-bootstrap";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signOut } from "firebase/auth";
+// import { signOut } from "firebase/auth";
 import firebaseConfig from "./firebase.config";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { FcGoogle } from "react-icons/fc";
 import { UserContext } from './../../App';
 import { useHistory , useLocation } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -22,7 +23,7 @@ const LogIn = () => {
   const { from } = location.state || { from: { pathname: "/" } };
   const auth = getAuth();
 
-  const [loggedInUser , setLoggedInUser] = useContext(UserContext);
+  const [ , setLoggedInUser] = useContext(UserContext);
 
   const [newUser, setNewUser] = useState(false);
 
@@ -59,19 +60,19 @@ const LogIn = () => {
       });
   };
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then((res) => {
-        const signedOutUser = {
-          isSignIn: false,
-          name: "",
-          email: "",
-          photo: "",
-        };
-        setUser(signedOutUser);
-      })
-      .catch((err) => {});
-  };
+  // const handleSignOut = () => {
+  //   signOut(auth)
+  //     .then((res) => {
+  //       const signedOutUser = {
+  //         isSignIn: false,
+  //         name: "",
+  //         email: "",
+  //         photo: "",
+  //       };
+  //       setUser(signedOutUser);
+  //     })
+  //     .catch((err) => {});
+  // };
 
   const handleSubmit = (e) => {
     if (newUser && user.email && user.password) {
@@ -199,10 +200,10 @@ const LogIn = () => {
       ) : (
         <Button onClick={signWithGoogle}>Sign In</Button>
       )} */}
-        <button onClick={signWithGoogle} className="googleSignIn">
+        <Button onClick={signWithGoogle} variant="contained" className="googleSignIn">
           <FcGoogle className="icon" />
           sign is with Google
-        </button>
+        </Button>
         <p style={{ color: "red" }}>{user.error}</p>
         {user.success && (
           <p style={{ color: "green" }}>

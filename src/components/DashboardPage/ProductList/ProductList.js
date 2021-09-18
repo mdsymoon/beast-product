@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Spinner, Table } from "react-bootstrap";
 import { UserContext } from "./../../../App";
-import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 const ProductList = () => {
   const [orderList, setOrderList] = useState([]);
   const [loggedInUser] = useContext(UserContext);
-  const [loadData , setLoadData] = useState(false);
+  const [loadData, setLoadData] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orderList`, {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/orderList`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: loggedInUser.email }),
@@ -21,20 +20,19 @@ const ProductList = () => {
       .then((res) => res.json())
       .then((data) => {
         setOrderList(data);
-        setLoadData(true)
+        setLoadData(true);
       });
-      
   }, [loggedInUser.email, orderList]);
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/deleteOrder`, {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/deleteOrder`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ _id }),
     })
       .then((res) => res.json())
       .then((data) => {
-        fetch(`http://localhost:5000/orderList`)
+        fetch(`https://enigmatic-spire-83470.herokuapp.com/orderList`)
           .then((res) => res.json())
           .then((data) => {
             setOrderList(data);
@@ -67,9 +65,9 @@ const ProductList = () => {
         </thead>
         <tbody>
           {orderList.map((list) => (
-            <tr className="text-white">
+            <tr key={list._id} className="text-white">
               <td>{list.title}</td>
-              <td>{list.price}</td>
+              <td>${list.price}</td>
               <td>{list.orderDate}</td>
               <td className="d-flex align-items-center">
                 {list.orderStatus}
@@ -87,7 +85,10 @@ const ProductList = () => {
                   <Tooltip title="Delete" placement="right">
                     <DeleteIcon
                       color="secondary"
-                      onClick={() => {handleDelete(list._id) ; setLoadData(false)}}
+                      onClick={() => {
+                        handleDelete(list._id);
+                        setLoadData(false);
+                      }}
                       style={{ marginLeft: "10px", cursor: "pointer" }}
                     />
                   </Tooltip>
@@ -106,7 +107,7 @@ const ProductList = () => {
           ))}
         </tbody>
       </Table>
-      {!loadData && <LinearProgress  className="mt-5"/>}
+      {!loadData && <LinearProgress className="mt-5" />}
     </div>
   );
 };

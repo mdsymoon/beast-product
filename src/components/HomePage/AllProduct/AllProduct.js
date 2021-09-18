@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useContext } from "react";
-import { Alert, Container } from "react-bootstrap";
+import {  Container } from "react-bootstrap";
 import { AllProducts, LoaderContext } from "../../../App";
 import AllProductCard from "../AllProductCard/AllProductCard";
 import "./AllProduct.css";
@@ -10,8 +10,8 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 const AllProduct = () => {
-  const [products, setProducts] = useContext(AllProducts);
-  const [loadData , setLoadData] = useContext(LoaderContext);
+  const [products, ] = useContext(AllProducts);
+  const [loadData , ] = useContext(LoaderContext);
 
 
   return (

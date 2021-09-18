@@ -3,7 +3,7 @@ import "./AllProductCard.css";
 import { Alert, Card } from "react-bootstrap";
 import { Button, IconButton } from "@material-ui/core";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import { AlertContext, SelectContext } from "../../../App";
+import {  SelectContext } from "../../../App";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "./../../../App";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -12,7 +12,6 @@ const AllProductCard = ({ product, title, price, img }) => {
   const [loggedInUser] = useContext(UserContext);
   const [, setSelectProduct] = useContext(SelectContext);
   const [show, setShow] = useState(true);
-  
 
   const history = useHistory();
 
@@ -29,7 +28,7 @@ const AllProductCard = ({ product, title, price, img }) => {
       email: loggedInUser.email,
     };
 
-    fetch(`http://localhost:5000/addToCart`, {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/addToCart`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(cartItem),
@@ -79,8 +78,7 @@ const AllProductCard = ({ product, title, price, img }) => {
                     color="secondary"
                     aria-label="add to shopping cart"
                     onClick={() => {
-                       alert("Please Login First");
-                      
+                      alert("Please Login First");
                     }}
                   >
                     <AddShoppingCartIcon />
@@ -94,13 +92,17 @@ const AllProductCard = ({ product, title, price, img }) => {
           )}
         </Card.Body>
         {!show && (
-        <Alert className='hideThis' variant="success" onClose={() => setShow(true)} dismissible style={{height:"60px " , padding:"0px",display:'flex'}}>
-          <p>{product.title} added to cart</p>
-        </Alert>
-      )}
+          <Alert
+            className="hideThis"
+            variant="success"
+            onClose={() => setShow(true)}
+            dismissible
+            style={{ height: "60px ", padding: "0px", display: "flex" }}
+          >
+            <p>{product.title} added to cart</p>
+          </Alert>
+        )}
       </Card>
-
-      
     </div>
   );
 };

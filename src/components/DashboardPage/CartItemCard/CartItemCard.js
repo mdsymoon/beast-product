@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
-import { CartLoaderContext, SelectContext } from "../../../App";
+import {  SelectContext } from "../../../App";
 import { useHistory } from "react-router-dom";
-import LinearProgress from "@material-ui/core/LinearProgress";
+
 
 const CartItemCard = ({ cartItem, title, price, img }) => {
   const [, setSelectProduct] = useContext(SelectContext);
@@ -15,7 +15,7 @@ const CartItemCard = ({ cartItem, title, price, img }) => {
   };
 
   const handleDeleteCart = (_id) => {
-    fetch(`http://localhost:5000/deleteCart`, {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/deleteCart`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ _id }),
