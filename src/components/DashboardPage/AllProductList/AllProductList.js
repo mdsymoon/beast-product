@@ -34,6 +34,22 @@ const AllProductList = () => {
         });
     }
   }, [status]);
+
+  const handleDelete = (_id) => {
+    fetch(`https://enigmatic-spire-83470.herokuapp.com/deleteProduct`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ _id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        fetch(`https://enigmatic-spire-83470.herokuapp.com/allProduct`)
+          .then((res) => res.json())
+          .then((data) => {
+            setProducts(data);
+          });
+      });
+  };
   return (
     <div>
       <div className="mt-5 pt-5 container ">
@@ -84,7 +100,10 @@ const AllProductList = () => {
                 </td>
                 <td>
                   <Tooltip title="Delete" placement="right">
-                    <IconButton aria-label="delete">
+                    <IconButton aria-label="delete" onClick={() => {
+                        handleDelete(product._id);
+                        
+                      }}>
                       <DeleteIcon color="secondary" />
                     </IconButton>
                   </Tooltip>

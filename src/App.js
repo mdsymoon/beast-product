@@ -30,7 +30,7 @@ function App() {
         setProducts(data);
         setLoadData(true);
       });
-  }, []);
+  }, [products]);
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
