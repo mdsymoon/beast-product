@@ -39,6 +39,7 @@ const AllOrderList = () => {
   const handleStatus = (e, _id) => {
     const newStatus = { _id, orderStatus: e.target.value };
     setOrderStatus(newStatus);
+    console.log(orderStatus);
   };
   useEffect(() => {
     if (orderStatus) {

@@ -16,21 +16,21 @@ const AddProduct = () => {
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
-
+   console.log(file);
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("title", data.title);
     formData.append("price", data.price);
     formData.append("status", data.status);
-
+    
     fetch(`https://enigmatic-spire-83470.herokuapp.com/addProduct`, {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {});
-    console.log(data);
+    
   };
 
   return (
