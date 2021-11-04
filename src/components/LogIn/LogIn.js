@@ -200,7 +200,7 @@ const LogIn = () => {
       ) : (
         <Button onClick={signWithGoogle}>Sign In</Button>
       )} */}
-        <Button onClick={signWithGoogle} variant="contained" className="googleSignIn">
+        <Button onClick={signWithGoogle} variant="contained" className="googleSignIn w-100">
           <FcGoogle className="icon" />
           sign is with Google
         </Button>

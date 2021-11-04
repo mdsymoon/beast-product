@@ -63,7 +63,7 @@ const AddProduct = () => {
             </Form.Select>
             <br />
             <input
-              className="input-style"
+              className="input-style "
               type="file"
               {...register("img", { required: true })}
               onChange={handleFileChange}
